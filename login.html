@@ -7,6 +7,51 @@
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type = "text/javascript">  
+    function myFunction() {
+
+        var gfgDb = openDatabase('userdb', '1.0', 'Test DB', 2 * 1024 * 1024);  
+        var msg;  
+        gfgDb.transaction(function (tx) {  
+           tx.executeSql('CREATE TABLE IF NOT EXISTS CLA2 (id unique, class,name)');  
+           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (1, "user1","123456")');  
+           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (2, "user2","123456")'); 
+           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (3, "user3","123456")'); 
+           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (4, "user4","123456")'); 
+           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (5, "user5","123456")');     
+           msg = '<p>Class message created and row inserted.</p>';  
+           document.querySelector('#status').innerHTML =  msg;  
+        }) 
+        gfgDb.transaction(function (tx) {  
+            tx.executeSql('SELECT * FROM CLA2', [], function (tx, results) {  
+               var len = results.rows.length, i;  
+               msg = "<p>Found rows: " + len + "</p>";  
+               document.querySelector('#status').innerHTML +=  msg;  
+               var x = document.getElementById("exampleInputEmail1");
+         var y = document.getElementById("exampleInputPassword1");
+         console.log(typeof y.value);
+         
+               for (i = 0; i < len; i++) {  
+                  //msg = "<p><b>" + results.rows.item(i).class + "</b></p>" + results.rows.item(i).name;  
+                 // document.querySelector('#status').innerHTML +=  msg;
+                  if(results.rows.item(i).name == y.value && results.rows.item(i).class == x.value)
+                  {
+                    document.getElementById("demo").innerHTML = "login sucees";
+                    window.location.href = "homepage.html"
+                  }
+                  else
+                  {
+                    document.getElementById("demo").innerHTML = "login failed";
+
+                  }
+
+               }  
+            }, null);  
+         });
+
+        }
+        </script>
+
   </head>
   <body class="p-3 m-0 border-0 bd-example">
 
@@ -22,13 +67,14 @@
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1">
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary" onclick="myFunction()">Submit</button>
     </form>
+    <div id = "status" name = "status">Status Message</div>
+    <div id="demo"></div>
+    <div id="demo1"></div>
     
     <!-- End Example Code -->
+  
+ 
   </body>
 </html>
