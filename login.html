@@ -11,30 +11,19 @@
     <script type = "text/javascript">  
     function myFunction() {
 
-        var gfgDb = openDatabase('userdb', '1.0', 'Test DB', 2 * 1024 * 1024);  
+        var gfgDb = openDatabase('userdb2', '1.0', 'Test DB1', 2 * 1024 * 1024);  
         var msg;  
         gfgDb.transaction(function (tx) {  
-           tx.executeSql('CREATE TABLE IF NOT EXISTS CLA2 (id unique, class,name)');  
-           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (1, "user1","123456")');  
-           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (2, "user2","123456")'); 
-           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (3, "user3","123456")'); 
-           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (4, "user4","123456")'); 
-           tx.executeSql('INSERT INTO CLA2 (id, class,name) VALUES (5, "user5","123456")');     
-           msg = '<p>Class message created and row inserted.</p>';  
-           document.querySelector('#status').innerHTML =  msg;  
-        }) 
-        gfgDb.transaction(function (tx) {  
-            tx.executeSql('SELECT * FROM CLA2', [], function (tx, results) {  
+            tx.executeSql('SELECT * FROM CLA5', [], function (tx, results) {  
                var len = results.rows.length, i;  
                msg = "<p>Found rows: " + len + "</p>";  
                document.querySelector('#status').innerHTML +=  msg;  
                var x = document.getElementById("exampleInputEmail1");
-         var y = document.getElementById("exampleInputPassword1");
-         console.log(typeof y.value);
+                var y = document.getElementById("exampleInputPassword1");
          
                for (i = 0; i < len; i++) {  
-                  //msg = "<p><b>" + results.rows.item(i).class + "</b></p>" + results.rows.item(i).name;  
-                 // document.querySelector('#status').innerHTML +=  msg;
+                  msg = "<p><b>" + results.rows.item(i).class + "</b></p>" + results.rows.item(i).name;  
+                 document.querySelector('#status').innerHTML +=  msg;
                   if(results.rows.item(i).name == y.value && results.rows.item(i).class == x.value)
                   {
                     document.getElementById("demo").innerHTML = "login sucees";
@@ -110,13 +99,16 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="login.html"><img src="images\user.png" class="img-thumbnail" alt="..."></a>
+            <a class="nav-link active" aria-current="page" href="login.html"><img src="images\user.png" class="img-thumbnail" alt="..."> Login </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><img src="images\india.png" class="img-thumbnail" alt="..."></a>
+            <a class="nav-link active" aria-current="page" href="Register.html"><img src="images\register.png" class="img-thumbnail" alt="..."> Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><img src="images\bag.png" class="img-thumbnail" alt="..."></a>
+            <a class="nav-link active" aria-current="page" href="#"><img src="images\india.png" class="img-thumbnail" alt="..."> Change country</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><img src="images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
           </li>
 
 
