@@ -1,0 +1,38 @@
+#sliderimage /* slider image height and width */
+{
+    height:400px;
+    width: 400px;
+}
+
+
+.middle {          /* hover effect */
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  .container    /* icons move to down by 30 px */
+  {
+    padding-top: 30px;
+  }
+  
+  .container:hover .image {   /* container hover  */
+    opacity: 0.3;
+  }
+  
+  .container:hover .middle {
+    opacity: 1;
+  }
+  
+  .imagehover  /* mouse hover on icons */
+  {
+  width: 10%;
+  height: auto;
+  
+  }
+
+  .card
+  {
+    width: 80%;      /* dimesion of card */
+    height: 20%;
+  }
+
+  
