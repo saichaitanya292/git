@@ -1,6 +1,0 @@
-//css code to hide the WhatsApp sharing link on the large screen
-@media screen and (min-width: 1000px) {
-    a {
-        display: none
-    }
-}
