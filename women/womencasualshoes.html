@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Womens casualshoes</title>
     <link rel="stylesheet" href="..\css\footer.css">
+    <link rel="stylesheet" href="..\css\whatsapp.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
@@ -84,6 +85,12 @@
         </div>
       </div>
     </nav>
+    <script>
+      //user-defined function to open and share web content on WhatsApp
+      function openWhatsApp() {
+        window.open('whatsapp://send?text=harlequin-martelle-56.tiiny.site');
+          }
+      </script>
 
     <script>
 
@@ -103,6 +110,9 @@
             <div class="card-body">
               <h5 class="card-title"><a href="..\women\wp1.html">Shoes Rs 5000</a></h5>
               <p class="card-text">Casual Shoes</p>
+
+    <!-- create an image icon to open the WhatsApp onclick -->   
+    <img src = "https://image.freepik.com/free-vector/whatsapp-icon-design_23-2147900927.jpg" height="50" size="50" onclick="openWhatsApp()">
               <button type="button"  onclick="valueSender('product1',2000,'product1','price1','img1','../images/women casualshoes/womencasualshoe1/wcs1.jpg')" class="btn btn-dark">Add to cart</button>
             </div>
           </div>
