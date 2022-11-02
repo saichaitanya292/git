@@ -37,17 +37,17 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="\homepage.html">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Men
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                <li><a class="dropdown-item" href="men\mencasualshoes.html"><img src="images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
+                <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="men\mencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-                <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+                <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -55,10 +55,10 @@
                 Women
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="\women\womenflipflop.html"><img src="images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
+                <li><a class="dropdown-item" href="\women\womenflipflop.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-                <li><a class="dropdown-item" href="#"><img src="images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+                <li><a class="dropdown-item" href="\women\womensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -66,10 +66,10 @@
                 About us
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Who we are </a></li>
-                <li><a class="dropdown-item" href="#">Reviews</a></li>
+                <li><a class="dropdown-item" href="\aboutus\whoweare.html">Who we are </a></li>
+                <li><a class="dropdown-item" href="\aboutus\Customer_Reviews.html">Reviews</a></li>
 
-                <li><a class="dropdown-item" href="#">Carrers</a></li>
+                <li><a class="dropdown-item" href="\aboutus\job_positions.html">Carrers</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -77,24 +77,40 @@
                 Help
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">FAQ</a></li>
-                <li><a class="dropdown-item" href="#">Size chart </a></li>
+                <li><a class="dropdown-item" href="\help\FAQ.html">FAQ</a></li>
+                <li><a class="dropdown-item" href="help\menshoesize.html">Size chart </a></li>
                 
-                <li><a class="dropdown-item" href="#">Contact us</a></li>
+                <li><a class="dropdown-item" href="\help\contactus.html">Contact us</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="..\login.html"><img src="..\images\user.png" class="img-thumbnail" alt="..."> Login </a>
+              <a class="nav-link active" aria-current="page" href="\login.html"><img src="\images\user.png" class="img-thumbnail" alt="..."> Login </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="..\Register.html"><img src="..\images\register.png" class="img-thumbnail" alt="..."> Register</a>
+              <a class="nav-link active" aria-current="page" href="\Register.html"><img src="\images\register.png" class="img-thumbnail" alt="..."> Register</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Change Country
+              </a>
+              <ul class="dropdown-menu">
+                <li onclick="displaycountry('img1')"><a class="dropdown-item" href="#"><img id="img1" src="\images\flags\india.png" class="img-thumbnail" alt="..." >India</a></li>
+                <li onclick="displaycountry('img2')"><a class="dropdown-item" href="#"><img id="img2" src="\images\flags\united-states-of-america.png" class="img-thumbnail" alt="...">Usa</a></li>
+                <li onclick="displaycountry('img3')"><a class="dropdown-item" href="#"><img id="img3" src="\images\flags\australia.png" class="img-thumbnail" alt="...">Australia</a></li>
+              </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"><img src="..\images\india.png" class="img-thumbnail" alt="..."> Change country</a>
+              <a class="nav-link active" aria-current="page" href="\cart\Cart.html"><img src="\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"><img src="..\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
+              <a class="nav-link active" aria-current="page" href="#">Selected country <img id="country" src="\images\flags\india.png" class="img-thumbnail" alt="..."></a>
             </li>
+            <li class="nav-item">
+              
+            </li>
+            
+            
+
 
           </ul>
         </div>

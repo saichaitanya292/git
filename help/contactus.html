@@ -1,105 +1,115 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="\css\footer.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="..\css\style.css"><!--imported style sheet-->
-    <link rel="stylesheet" href="..\css\cardstyle.css">
-    <link rel="stylesheet" href="..\css\footer.css">
-    <!--boot strap classes-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <title>Carrers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script>
 
-    
-    <!-- Bootstrap Font Icon CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Accessories Home</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="..\css\footer.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  </head>
+        function displaycountry(imgid)
+        {
+          var x = document.getElementById(imgid).src;
+          document.getElementById("country").src = x;
+          alert("country chnaged");
+        
+        }  
+          </script>
+
+</head>
 
 
   <body>
     <nav class="navbar navbar-expand-lg bg-warning">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Foot world</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="\homepage.html">Home</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Men
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="..\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                  <li><a class="dropdown-item" href="..\men\mencasualshoes.html"><img src="..\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
-    
-                  <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="..\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Women
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="..\women\womenflipflop.html"><img src="..\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                  <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="..\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
-    
-                  <li><a class="dropdown-item" href="\women\womensneakers.html"><img src="..\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  About us
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Who we are </a></li>
-                  <li><a class="dropdown-item" href="#">Reviews</a></li>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Foot world</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="\homepage.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Men
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="men\mencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-                  <li><a class="dropdown-item" href="#">Carrers</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Help
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">FAQ</a></li>
-                  <li><a class="dropdown-item" href="#">Size chart </a></li>
-                  
-                  <li><a class="dropdown-item" href="#">Contact us</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="..\login.html"><img src="..\images\user.png" class="img-thumbnail" alt="..."> Login </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="..\Register.html"><img src="..\images\register.png" class="img-thumbnail" alt="..."> Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"><img src="..\images\india.png" class="img-thumbnail" alt="..."> Change country</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"><img src="..\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
-              </li>
+                <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Women
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="\women\womenflipflop.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-  
-            </ul>
-          </div>
+                <li><a class="dropdown-item" href="\women\womensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About us
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="\aboutus\whoweare.html">Who we are </a></li>
+                <li><a class="dropdown-item" href="\aboutus\Customer_Reviews.html">Reviews</a></li>
+
+                <li><a class="dropdown-item" href="\aboutus\job_positions.html">Carrers</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Help
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="\help\FAQ.html">FAQ</a></li>
+                <li><a class="dropdown-item" href="help\menshoesize.html">Size chart </a></li>
+                
+                <li><a class="dropdown-item" href="\help\contactus.html">Contact us</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="\login.html"><img src="\images\user.png" class="img-thumbnail" alt="..."> Login </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="\Register.html"><img src="\images\register.png" class="img-thumbnail" alt="..."> Register</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Change Country
+              </a>
+              <ul class="dropdown-menu">
+                <li onclick="displaycountry('img1')"><a class="dropdown-item" href="#"><img id="img1" src="\images\flags\india.png" class="img-thumbnail" alt="..." >India</a></li>
+                <li onclick="displaycountry('img2')"><a class="dropdown-item" href="#"><img id="img2" src="\images\flags\united-states-of-america.png" class="img-thumbnail" alt="...">Usa</a></li>
+                <li onclick="displaycountry('img3')"><a class="dropdown-item" href="#"><img id="img3" src="\images\flags\australia.png" class="img-thumbnail" alt="...">Australia</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="\cart\Cart.html"><img src="\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Selected country <img id="country" src="\images\flags\india.png" class="img-thumbnail" alt="..."></a>
+            </li>
+            <li class="nav-item">
+              
+            </li>
+            
+            
+
+
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
 
       <div class=" contactus-container">
