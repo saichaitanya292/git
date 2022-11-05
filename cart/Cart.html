@@ -35,6 +35,8 @@
 
 
   <body>
+
+   
   
 <script>
 
@@ -140,11 +142,48 @@
 
 
 </div>
+<script>
+  var elerow = document.createElement("div");
+  elerow.classList.add("row");
+  var elecol = document.createElement("div");
+  elecol.classList.add("col");
+  elerow.appendChild(elecol);
+  var imgele = document.createElement("img");
+  imgele.setAttribute('id','img1');
+  elecol.appendChild(imgele);
+  document.getElementById('img1').style.height = "100px";
+  var elecol1 = document.createElement("div");
+  elecol1.classList.add("col");
+  var pele1 = document.createElement("p");
+  pele1.setAttribute('id','product1');
+  elecol1.appendChild(pele1);
+  elerow.appendChild(elecol1)
+  var elecol2 = document.createElement("div");
+  elecol2.classList.add("col");
+  var pele2 = document.createElement("p");
+  pele2.setAttribute('id','price1');
+  elecol2.appendChild(pele2);
+  elerow.appendChild(elecol2);
+  var elecol3 = document.createElement("div");
+  elecol3.classList.add("col");
+  var bele3 = document.createElement("button");
+  bele3.classList.add("col");
+  bele3.setAttribute('id','b1');
+  var btext = document.createTextNode("Delete");
+  bele3.appendChild(text)
+  elecol3.appendChild(bele3);
+  elerow.appendChild(elecol3);
+  var brele3 = document.createElement("br");
+  bele3.appendChild(brele3);
+  document.getElementById("btn btn-primary").onclick = price1();
 
-<div class="container">
+
+</script>
+
+<div class="container" >
 <div class="row" >
     <div class="col">
-        <img id ="img1" style="height:100px ;"> </p> <!--name of product-->
+        <img id ="img1" style="height:100px ;"> <!--name of product-->
     </div>
     <div class="col"> <p id ="product1"> </p> <!--name of product--></div>
     <div class="col">  <p id ="price1"> </p> <!--name of product--></div> 
@@ -159,6 +198,14 @@
         <div class="col">  <p id ="price2"> </p> </p> <!--name of product--></div> 
     <div class="col"> <button type="button" id="b2" onclick="price2()" class="btn btn-primary">Delete</button></div>
     </div>
+    <div class="row" >
+      <div class="col">
+          <img id ="mimg1" style="height:100px ;"> </p> <!--name of product-->
+      </div>
+      <div class="col"> <p id ="mproduct2"> </p> <!--name of product--></div>
+      <div class="col">  <p id ="mprice2"> </p> </p> <!--name of product--></div> 
+  <div class="col"> <button type="button" id="b3" onclick="price3()" class="btn btn-primary">Delete</button></div>
+  </div>
 
     <div class="row">
         <div class="col"> <p id ="taxes">tax </p> <!--tax --> </div>
@@ -172,12 +219,14 @@
     </div>
 
     <div class="row">  
-        <div class="col offset-md-6"> <p id ="totalprice"></p></div>     
+        <div class="col offset-md-6"> <p id ="totalprice"></p></div>
+      <button onclick="price()"> totalprice</button>   
        
     </div>
     
 </div>
 </div>
+<div id="error"> </div>
 <script>
     function price1()
     {
@@ -189,22 +238,66 @@
         /* changing total price after removing product */
         document.getElementById("totalprice").innerHTML = 0;
     }
+
+    function price()
+    {
+      for (let i = 0; i < localStorage.length; i++) {
+        console.log(localStorage.getItem(localStorage.key(i)));
+        let result = a.includes("price");
+        if (result) {
+          a = localStorage.getItem(localStorage.key(i));
+          var totalprice = 0;
+          totalprice += a;
+          console.log(totalprice)
+        }
+        
+
+
+      }
+      const el1 = document.getElementById('b1');
+      // if(el1 == null)
+      // {
+      //   price = 
+
+      // }
+
+
+    }
     
  </script>
 
 <script>
     /* writing price and product name to elements by using their id */
 
-    document.getElementById("product1").innerHTML =localStorage.getItem("product1");
-    document.getElementById("product2").innerHTML = localStorage.getItem("product2");
-    document.getElementById("price1").innerHTML = parseInt(localStorage.getItem("price1"));
-    document.getElementById("price2").innerHTML = parseInt(localStorage.getItem("price2"));
-    document.getElementById("img1").src = localStorage.getItem("img1");
-    document.getElementById("img2").src = localStorage.getItem("img2");
-    console.log(localStorage.getItem("img2"))
+   // document.getElementById("product1").innerHTML =localStorage.getItem("product1");
+    //document.getElementById("product2").innerHTML = localStorage.getItem("product2");
+    //document.getElementById("price1").innerHTML = parseInt(localStorage.getItem("price1"));
+    //document.getElementById("price2").innerHTML = parseInt(localStorage.getItem("price2"));
+    //document.getElementById("img1").src = localStorage.getItem("img1");
+    //document.getElementById("img2").src = localStorage.getItem("img2");
+   // console.log(localStorage.getItem("img2"))
 
     /* calculating total price */
     document.getElementById("totalprice").innerHTML = parseInt(localStorage.getItem("price1")) + parseInt(localStorage.getItem("price2")) + 150;
+   
+    for (let i = 1; i <= localStorage.length; i++) {
+      document.getElementById("price"+i).innerHTML = parseInt(localStorage.getItem("price"+i));
+      document.getElementById("img"+i).src = localStorage.getItem("img"+i);
+      document.getElementById("product"+i).innerHTML = localStorage.getItem("product"+i);
+}
+
+try {
+  for (let i = 1; i <= localStorage.length; i++) {
+      document.getElementById("mprice"+i).innerHTML = parseInt(localStorage.getItem("mprice"+i));
+      document.getElementById("mimg"+i).src = localStorage.getItem("mimg"+i);
+      document.getElementById("mproduct"+i).innerHTML = localStorage.getItem("mproduct"+i);
+}
+}
+catch(err) {
+  document.getElementById("error").innerHTML = err.message;
+}
+
+
         
 </script>
 <script>
@@ -239,6 +332,26 @@ $("#shippingrate").fadeOut();
 localStorage.removeItem("product2");
 localStorage.removeItem("price2");
 localStorage.removeItem("img2");
+
+});
+});
+
+
+</script>
+<script>
+  $(document).ready(function(){
+$("#b3").click(function(){
+$("#b3").fadeOut();        /* removing elements after the clciking on second delete */
+$("#mproduct1").fadeOut();
+$("#mprice1").fadeOut();
+$("#mimg1").fadeOut();
+$("#taxes").fadeOut();
+$("#shipping").fadeOut();
+$("#taxesrate").fadeOut();
+$("#shippingrate").fadeOut();
+localStorage.removeItem("mproduct1");
+localStorage.removeItem("mprice1");
+localStorage.removeItem("mimg1");
 
 });
 });

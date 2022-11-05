@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="\css\footer.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home page</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+      </head>
+
+
+
+<body>
+    <div class="container" id="123" ></div>
+    
+    
+  
+
+<script>
+    
+function genhtml(num)
+{
+  price = localStorage.getItem('price'+[i]);
+  name = localStorage.getItem('product'+[i]);
+  var elerow = document.createElement("div");
+  elerow.classList.add("row");
+  var elecol = document.createElement("div");
+  elecol.classList.add("col");
+  elerow.appendChild(elecol);
+  var imgele = document.createElement("img");
+  imgele.setAttribute('id','img1');
+  elecol.appendChild(imgele);
+  imgele.setAttribute("style","height:100px ;")
+  var elecol1 = document.createElement("div");
+  elecol1.classList.add("col");
+  var pele1 = document.createElement("p");
+  pele1.setAttribute('id','product'+[i]);
+  elecol1.appendChild(pele1);
+  elerow.appendChild(elecol1)
+  var elecol2 = document.createElement("div");
+  elecol2.classList.add("col");
+  var pele2 = document.createElement("p");
+  pele2.setAttribute('id','price'+[i]);
+  elecol2.appendChild(pele2);
+  elerow.appendChild(elecol2);
+  var elecol3 = document.createElement("div");
+  elecol3.classList.add("col");
+  var bele3 = document.createElement("button");
+  bele3.classList.add("col");
+  bele3.setAttribute('id','b1');
+  var btext = document.createTextNode("Delete");
+  bele3.appendChild(btext);
+  elecol3.appendChild(bele3);
+  elerow.appendChild(elecol3);
+  var brele3 = document.createElement("br");
+  bele3.appendChild(brele3);
+  bele3.setAttribute('onclick','price1()');
+  const element = document.getElementById("123");
+  element.appendChild(elerow);
+  document.getElementById('product'+[i]).innerHTML = name;
+  document.getElementById('price'+[i]).innerHTML = price;
+}
+
+
+</script>
+<script>
+    
+    var length = localStorage.length;
+    //console.log(length)
+    //console.log(localStorage)
+
+    for(var i=1;i<=length;i++)
+    {
+        localStorage
+        localStorage.getItem("img1")
+        genhtml(i);
+    }
+
+    
+    </script>
+
+    <script>
+      for (let i = 0; i < localStorage.length; i++) {
+        //console.log(localStorage.getItem(localStorage.key(i)));
+        a = localStorage.getItem(localStorage.key(i));
+        b = localStorage.key(i)
+        let result = b.includes("price");
+        console.log(result)
+        if (result) {  
+          console.log(a);
+          var totalprice = 0;
+          totalprice += a;
+          //console.log(totalprice)
+        }
+
+      }
+
+
+
+    </script>
+    <button onclick="clear()"> clear local  </button>
+    <script>
+
+
+function clear()
+{
+    localStorage.clear();
+    alert("cleared");
+
+}
+    
+    </script>
+
+
+</body>
+</html>
