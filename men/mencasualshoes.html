@@ -6,17 +6,6 @@
     <title>Mens flip flop</title>
     <link rel="stylesheet" href="..\css\footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script>
-
-      function valueSender(name, price,key1,key2,key3,image)
-      {
-      localStorage.setItem(key1,name);
-      localStorage.setItem(key2,price);
-      localStorage.setItem(key3,image);
-      alert("product added" + key1);
-      }
-          </script>
-
 <script>
 
   function displaycountry(imgid)
@@ -26,17 +15,18 @@
     alert("country chnaged");
   
   }
+</script>
   
-  
-    </script>
      <script>
 
-      function valueSender(name, price,key1,key2,key3,image)
+      function valueSender(name,price,product_image)
       {
-      localStorage.setItem(key1,name);
-      localStorage.setItem(key2,price);
-      localStorage.setItem(key3,image);
-      alert("product added" + key1);
+      const product_details = [name, price, product_image];
+      const a = JSON.stringify(product_details);
+      const b = JSON.parse(a);
+      console.log(b[0]);
+      localStorage.setItem(name,b);
+      alert("product added" + name);
       }
           </script>
   
@@ -115,7 +105,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="\cart\Cart.html"><img src="..\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
+              <a class="nav-link active" aria-current="page" href="\cart\cartnew.html"><img src="..\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Selected country <img id="country" src="\images\flags\india.png" class="img-thumbnail" alt="..."></a>
@@ -154,7 +144,7 @@
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mp1.html">Shoes Rs 3000</a></h5>
               <p class="card-text">Shoes</p>
-              <button type="button" class="btn btn-dark">Add to cart</button>
+              <button type="button" onclick="valueSender('product1','3000','..\\images\\men shoes\\ms1\\ms1.jpg')" class="btn btn-dark">Add to cart</button>
             </div>
           </div>
         </div>
@@ -164,7 +154,7 @@
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mp2.html">Shoes Rs 5000</a></h5>
               <p class="card-text">Shoes 2</p>
-              <button type="button" onclick="valueSender('mproduct1',5000,'mproduct1','mprice1','mimg1','..\\images\\men shoes\\ms2\\ms1.jpg')" class="btn btn-dark">Add to cart</button>
+              <button type="button" onclick="valueSender('product2','5000','..\\images\\men shoes\\ms2\\ms1.jpg')" class="btn btn-dark">Add to cart</button>
             </div>
           </div>
         </div>
@@ -174,7 +164,7 @@
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mp3.html">Shoes Rs 2800</a></h5>
               <p class="card-text">Shoes 3</p>
-              <button type="button" class="btn btn-dark">Add to cart</button>
+              <button type="button" onclick="valueSender('product3','2800','..\\images\\men shoes\\ms3\\ms2.jpg')" class="btn btn-dark">Add to cart</button>
             </div>
           </div>
         </div>
@@ -184,7 +174,7 @@
             <div class="card-body">
               <h5 class="card-title">Shoes Rs 10000</h5>
               <p class="card-text">Shoes 4</p>
-              <button type="button" class="btn btn-dark">Add to cart</button>
+              <button type="button"  onclick="valueSender('product4','10000','..\\images\\men shoes\\ms4.jpg')" class="btn btn-dark">Add to cart</button>
             </div>
           </div>
         </div>
@@ -194,7 +184,7 @@
             <div class="card-body">
               <h5 class="card-title">Shoes Rs 10000</h5>
               <p class="card-text">Shoes 5</p>
-              <button type="button" class="btn btn-dark">Add to cart</button>
+              <button type="button" onclick="valueSender('product5','10000','..\\images\\men shoes\\ms5.jpg')" class="btn btn-dark">Add to cart</button>
             </div>
           </div>
         </div>
@@ -204,7 +194,7 @@
             <div class="card-body">
               <h5 class="card-title">Shoes Rs 10000</h5>
               <p class="card-text">Shoes 6</p>
-              <button type="button" class="btn btn-dark">Add to cart</button>
+              <button type="button" onclick="valueSender('product6','10000','..\\images\\men shoes\\ms7.jpg')" class="btn btn-dark">Add to cart</button>
             </div>
           </div>
         </div>
