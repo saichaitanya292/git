@@ -8,7 +8,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    </head>
+    <script>
+
+      function valueSender(name,price,product_image)
+      {
+      const product_details = [name, price, product_image];
+      const a = JSON.stringify(product_details);
+      const b = JSON.parse(a);
+      console.log(b[0]);
+      localStorage.setItem(name,b);
+      alert("product added" + name);
+      }
+          </script> 
+
+<script>
+
+  function displaycountry(imgid)
+  {
+    var x = document.getElementById(imgid).src;
+    document.getElementById("country").src = x;
+    alert("country chnaged");
+  
+  }
+  
+  
+    </script>
+  
+  
+  </head>
 
 
   <body>
@@ -21,17 +48,17 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="\homepage.html">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Men
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                <li><a class="dropdown-item" href="men\mencasualshoes.html"><img src="images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
+                <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="\men\mencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-                <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+                <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -39,10 +66,10 @@
                 Women
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="\women\womenflipflop.html"><img src="images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
+                <li><a class="dropdown-item" href="\women\womenflipflop.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-                <li><a class="dropdown-item" href="\women\womensneakers.html"><img src="images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+                <li><a class="dropdown-item" href="\women\womensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -78,13 +105,13 @@
                 Change Country
               </a>
               <ul class="dropdown-menu">
-                <li onclick="displaycountry('img1')"><a class="dropdown-item" href="#"><img id="img1" src="\images\flags\india.png" class="img-thumbnail" alt="..." >India</a></li>
-                <li onclick="displaycountry('img2')"><a class="dropdown-item" href="#"><img id="img2" src="\images\flags\united-states-of-america.png" class="img-thumbnail" alt="...">Usa</a></li>
-                <li onclick="displaycountry('img3')"><a class="dropdown-item" href="#"><img id="img3" src="images\flags\australia.png" class="img-thumbnail" alt="...">Australia</a></li>
+                <li onclick="displaycountry('image1')"><a class="dropdown-item" href="#"><img id="image1" src="\images\flags\india.png" class="img-thumbnail" alt="..." >India</a></li>
+                <li onclick="displaycountry('image2')"><a class="dropdown-item" href="#"><img id="image2" src="\images\flags\united-states-of-america.png" class="img-thumbnail" alt="...">Usa</a></li>
+                <li onclick="displaycountry('image3')"><a class="dropdown-item" href="#"><img id="image3" src="\images\flags\australia.png" class="img-thumbnail" alt="...">Australia</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="cart\cartnew.html"><img src="\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
+              <a class="nav-link active" aria-current="page" href="\cart\cartnew.html"><img src="\images\bag.png" class="img-thumbnail" alt="..."> Cart </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Selected country <img id="country" src="\images\flags\india.png" class="img-thumbnail" alt="..."></a>
@@ -135,13 +162,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active"><!-- carousel image-->
-            <img id="sliderimage" src="..\images\men shoes\ms2\ms1.jpg" class="d-block w-100" alt="..." style="height:400px;">
+            <img id="sliderimage" src="\images\men sneakers\msn1.jpg" class="d-block w-100" alt="..." style="height:400px;">
           </div>
           <div class="carousel-item"><!-- carousel image-->
-            <img id="sliderimage" src="..\images\men shoes\ms2\ms2.png" class="d-block w-100" alt="...">
+            <img id="sliderimage" src="\images\men sneakers\msn2.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item"><!-- carousel image-->
-            <img id="sliderimage" src="..\images\men shoes\ms2\ms3.jpg" class="d-block w-100" alt="...">
+            <img id="sliderimage" src="\images\men sneakers\msn3.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         
@@ -163,8 +190,8 @@
           <i class="bi bi-star-half"></i><!--star icon-->
           <i class="bi bi-star"></i><!-- star icon-->
     </a>
-    <p>Product 2 <br> Price 10000</p>
-    <a class="btn btn-primary" href="Cart.html" role="button">Add to cart</a>
+    <p>Product 13 <br> Price 10000</p>
+    <button type="button" onclick="valueSender('product14','10000','..\\images\\men sneakers\\msn2.jpg')" class="btn btn-dark">Add to cart</button>
     
 </div>
 
@@ -227,32 +254,32 @@
               <div class="carousel-item active"><!-- carousel image-->
                 <div class="row">
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men shoes\ms2\ms3.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn1.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men shoes\ms3.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn2.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men shoes\ms4.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn3.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men shoes\ms5.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\ms4.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                 </div>
               </div>
               <div class="carousel-item"><!-- carousel image-->
                 <div class="row">
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men sneakers\msn1.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn1.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men sneakers\msn2.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn5.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men sneakers\msn3.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn6.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men sneakers\ms4.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\ms4.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                 </div>
     
@@ -260,16 +287,16 @@
               <div class="carousel-item"><!-- carousel image-->
                 <div class="row">
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men sneakers\msn5.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn1.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men sneakers\msn6.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn5.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men fliflops\mff1.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\msn6.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                     <div class="col">
-                        <img id="sliderimage" src="..\images\men fliflops\mff2.jpg" class="d-block w-100" alt="..." style="height:400px;">
+                        <img id="sliderimage" src="\images\men sneakers\ms4.jpg" class="d-block w-100" alt="..." style="height:400px;">
                     </div>
                 </div>
               </div>
