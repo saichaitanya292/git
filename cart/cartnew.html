@@ -161,7 +161,7 @@
 
   </div>
   
-  
+  <a class="btn btn-primary" href="\cart\payments.html" role="button">Make Payment</a>
 
 <script>
 var totalprice = 0; 
@@ -266,10 +266,11 @@ minusprice = parseInt(third.textContent);
 elementprice = document.getElementById('totalprice');
 price = parseInt(elementprice.textContent);
 document.getElementById('totalprice').innerHTML = price - minusprice;
-console.log(removestorage)
+console.log(removestorage);
 console.log("removed product"+ removestorage.id);
 localStorage.removeItem(removestorage.id);
 removerow.remove();
+
 
 
 
