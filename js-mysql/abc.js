@@ -32,14 +32,6 @@ con.connect(function(err) {
   
 });
 
-
-app.post('/addusers', (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    res.send("POST Request Called");
-    //console.log("res",res);
-    console.log("req",req.body);
-    console.log("add users");
-  })
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
