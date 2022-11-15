@@ -10,7 +10,19 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
        
-      
+      <style>
+
+        /* Top right text */
+.top-right {
+  position: absolute;
+  top: 100px;
+  right: 300px;
+  font-weight: bold;
+  font-size: 40px;
+  background-color: lightgrey;
+  color: blue;
+}
+      </style>
       
       </head>
     </html>
@@ -131,7 +143,9 @@ function displaycountry(imgid)
               </li>
 
               <li class="nav-item">
-                <a type="button" class="btn btn-secondary" href="\signout.html">signout</a>
+                <a type="button" id="signout" class="btn btn-secondary" href="\signout.html" style="
+                padding-left: 0px;
+            ">signout</a>
               </li>
                 
               </li>
@@ -145,14 +159,31 @@ function displaycountry(imgid)
       </nav>
 
       
-      <script>
-        const mode = sessionStorage.getItem('username');
-        console.log(mode); // 'dark'\
-        document.getElementById("log").innerHTML = "Hi user" + mode; 
-      </script>
+      
      
 
-      <img src="images\homepageimageres.jpg" class="img-fluid" alt="homwpageimage">
+     
+      <div class="container">
+        <img src="images\homepageimageres.jpg" alt="Snow" style="width:100%;">
+        <div class="top-right" id = "user">Top Right</div>
+      </div>
+      <script>
+        const mode = sessionStorage.getItem('username');
+        if(mode==null)
+        {
+          document.getElementById("user").innerHTML = "";
+          var a = document.getElementById("signout");
+          a.remove();
+        }
+        else
+        {
+
+          document.getElementById("user").innerHTML = "Hi user " + mode; 
+          console.log(mode); 
+
+        }
+        
+      </script>
       
       <div class="row justify-content-around">
         <div class="col-2">
