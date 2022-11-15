@@ -127,13 +127,12 @@ function displaycountry(imgid)
 
               </li>
               <li class="nav-item">
-                <p id="log"></p>
+                <div id="log"></div>
               </li>
 
-              
-
-              
-          
+              <li class="nav-item">
+                <a type="button" class="btn btn-secondary" href="\signout.html">signout</a>
+              </li>
                 
               </li>
               
@@ -144,6 +143,8 @@ function displaycountry(imgid)
           </div>
         </div>
       </nav>
+
+      
       <script>
         const mode = sessionStorage.getItem('username');
         console.log(mode); // 'dark'\
