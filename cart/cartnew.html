@@ -276,6 +276,42 @@ removerow.remove();
 
 }
 </script>
+<script>
+
+var all = document.querySelectorAll('[id^="detailsrow"]');
+//console.log(all);
+var i=0;
+var product_details = [];
+for (const value of all.values()) {
+  let firstChild = value.childNodes;
+  console.log("first",firstChild); 
+  img =  firstChild[0].childNodes[0].src;
+  productname =  firstChild[1].childNodes[0].textContent;
+  price =  firstChild[2].childNodes[0].textContent;
+  product_details.push([img,productname,price])
+  i++;
+}
+// console.log(product_details)
+// var a = JSON.parse(product_details);
+// console.log(a);
+var a = {"image1":"img"};
+console.log("products on cart",a);
+
+fetch('http://127.0.0.1:80/process_post', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json',},
+    mode: 'cors', 
+    body: JSON.stringify({"a":"b"})
+})
+.then(response => response)
+.then(response => console.log(response))
+
+
+</script>
+
+
+
+
 
 <footer>
   <div class="footer-gray">

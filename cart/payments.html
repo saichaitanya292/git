@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
 
       function valueSender(name,price,product_image)
@@ -33,9 +34,12 @@
   
   
     </script>
-    <script>
-      var tp = localStorage.getItem('tp1');
-      document.getElementById("tp").innerHTML = "Make Payment of Rs."+" "+tp1;
+    <script type="module">
+        import { jsPDF } from "jspdf";
+        // Default export is a4 paper, portrait, using millimeters for units
+        const doc = new jsPDF();
+        doc.text("Hello world!", 10, 10);
+        doc.save("a4.pdf");
     </script>
   
   
@@ -59,10 +63,10 @@
                 Men
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                <li><a class="dropdown-item" href="\men\mencasualshoes.html"><img src="images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
+                <li><a class="dropdown-item" href="\men\menflipflops.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="\men\mencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-                <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+                <li><a class="dropdown-item" href="\men\mensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -70,10 +74,10 @@
                 Women
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="\women\womenflipflop.html"><img src="images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
-                <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
+                <li><a class="dropdown-item" href="\women\womenflipflop.html"><img src="\images\flip-flops.png" class="img-thumbnail" alt="...">Flip flops</a></li>
+                <li><a class="dropdown-item" href="\women\womencasualshoes.html"><img src="\images\running-shoe.png" class="img-thumbnail" alt="...">Casual shoes</a></li>
   
-                <li><a class="dropdown-item" href="\women\womensneakers.html"><img src="images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
+                <li><a class="dropdown-item" href="\women\womensneakers.html"><img src="\images\sneakers.png" class="img-thumbnail" alt="...">Sneakers</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
