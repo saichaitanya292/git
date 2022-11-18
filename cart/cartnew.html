@@ -167,6 +167,7 @@
   </div>
   
   <a class="btn btn-primary" href="\cart\payments.html" role="button">Make Payment</a>
+  <button class="btn btn-primary" onclick="create_invoice_pdf()" role="button">Download pdf</button>
 
 <script>
 var totalprice = 0; 
@@ -289,6 +290,8 @@ removerow.remove();
 <p id="demo">  </p>
 
 <script>
+function create_invoice_pdf()
+{
 var a = {};
 var b= [];
 var all = document.querySelectorAll('[id^="detailsrow"]');
@@ -363,6 +366,7 @@ doc.html(elementHTML, {
 });
 
  }
+}
 
 
 </script>
