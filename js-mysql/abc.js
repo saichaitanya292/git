@@ -1,11 +1,9 @@
 const express = require('express');
 const app = express();
 
+
+
 // No CORS Headder set
-app.get('/', function(request, response) {
-  
-  response.send("hi");
-});
 
 // CORS header `Access-Control-Allow-Origin` set to accept all
 app.get('/allow-cors', function(request, response) {

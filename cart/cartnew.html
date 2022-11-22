@@ -333,10 +333,9 @@ function doSomething(success)
  console.log("success msg",success["msg"][0]["productname"])
   let text = "";
   let total = 0;
-const fruits = ["apple", "orange", "cherry"];
 success["msg"].forEach(myFunction);
 
-document.getElementById("demo").innerHTML = text +"<br>" + total;
+document.getElementById("demo").innerHTML =  "<h1>Invoice</h1>" + text +"<br>" + "total" + total;
  
 function myFunction(item, index) {
   text += success["msg"][index]["productname"] + ": " + success["msg"][index]["price"] + "<br>"; 

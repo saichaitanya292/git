@@ -8,9 +8,7 @@ app.use((req, res, next) => {
    next();
  });
 
-app.get('/index.html', function (req, res) {  
-   res.sendFile( __dirname + "/" + "index.html" );  
-})  
+
 app.post('/process_post', urlencodedParser, function (req, res) {  
    // Prepare output in JSON format  
    response = {  
