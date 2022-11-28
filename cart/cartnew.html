@@ -335,10 +335,10 @@ function doSomething(success)
   let total = 0;
 success["msg"].forEach(myFunction);
 
-document.getElementById("demo").innerHTML =  "<h1>Invoice</h1>" + text +"<br>" + "total" + total;
+document.getElementById("demo").innerHTML =  "<center>Invoice</center>" + text +"<br>" + "taxes 100<br>" + "total" + total;
  
 function myFunction(item, index) {
-  text += success["msg"][index]["productname"] + ": " + success["msg"][index]["price"] + "<br>"; 
+  text += success["msg"][index]["productname"] + "  : " + success["msg"][index]["price"] + "<br>"; 
   total += parseInt(success["msg"][index]["price"]);
 }
 
