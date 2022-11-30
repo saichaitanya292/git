@@ -146,13 +146,23 @@ width:20rem;
         </div>
       </div>
     </nav>
+    <style>
+      #zoom {
+        transition: transform .2s; /* Animation */
+        margin: 0 auto;
+      }
+      
+      #zoom:hover {
+        transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      }
+      </style>
 
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card">
-            <img src="..\images\men sneakers\msn1.jpg" class="card-img-top" alt="..." >
+            <img id="zoom" src="..\images\men sneakers\msn1.jpg" class="card-img-top" alt="..." >
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mensneakers\mps1.html">Sneakers Rs 3000</a></h5>
               <p class="card-text">Sneakers </p>
@@ -165,7 +175,7 @@ width:20rem;
         </div>
         <div class="col">
           <div class="card">
-            <img src="..\images\men sneakers\msn2.jpg" class="card-img-top" alt="...">
+            <img id="zoom" src="..\images\men sneakers\msn2.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mensneakers\mps2.html">Sneakers  Rs 5000</a></h5>
               <p class="card-text">Sneakers  2</p>
@@ -178,7 +188,7 @@ width:20rem;
         </div>
         <div class="col">
           <div class="card">
-            <img src="..\images\men sneakers\msn3.jpg" class="card-img-top" alt="...">
+            <img id="zoom" src="..\images\men sneakers\msn3.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mensneakers\mps3.html">Sneakers  Rs 2800</a></h5>
               <p class="card-text">Sneakers  3</p>
@@ -191,7 +201,7 @@ width:20rem;
         </div>
         <div class="col">
           <div class="card">
-            <img src="..\images\men sneakers\ms4.jpg" class="card-img-top" alt="...">
+            <img id="zoom" src="..\images\men sneakers\ms4.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mensneakers\mps4.html">Sneakers  Rs 10000</a></h5>
               <p class="card-text">Sneakers  4</p>
@@ -204,7 +214,7 @@ width:20rem;
         </div>
         <div class="col">
           <div class="card">
-            <img src="..\images\men sneakers\msn5.jpg" class="card-img-top" alt="...">
+            <img id="zoom" src="..\images\men sneakers\msn5.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mensneakers\mps5.html">Sneakers  Rs 10000</a></h5>
               <p class="card-text">Sneakers  5</p>
@@ -217,7 +227,7 @@ width:20rem;
         </div>
         <div class="col">
           <div class="card">
-            <img src="..\images\men sneakers\msn6.jpg" class="card-img-top" alt="...">
+            <img id="zoom" src="..\images\men sneakers\msn6.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><a href="..\men\mensneakers\mps6.html">Sneakers  Rs 10000</a></h5>
               <p class="card-text">Sneakers  6</p>
