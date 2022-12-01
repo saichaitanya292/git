@@ -166,8 +166,8 @@
 
   </div>
   
-  <a class="btn btn-primary" href="\cart\payments.html" role="button">Make Payment</a>
-  <button class="btn btn-primary" onclick="create_invoice_pdf()" role="button">Download pdf</button>
+  <!-- <a class="btn btn-primary" href="\cart\payments.html" role="button"></a> -->
+  <button class="btn btn-primary" onclick="create_invoice_pdf()" role="button">Make Payment </button>
 
 <script>
 var totalprice = 0; 
@@ -335,7 +335,12 @@ function doSomething(success)
   let total = 0;
 success["msg"].forEach(myFunction);
 
-document.getElementById("demo").innerHTML =  "<center>Invoice</center>" + "<table style='width:100%'><tr><th>Product</th><th>Price</th></tr>"+ text +"<br>" + "<br>"+ "<tr><td>" + "Tax" + "</td><td>"+"10"+"</td></tr>" + "<tr><td>" + "Total" + "</td><td>"+ total+ "</td></tr>" +"</table>";
+// document.getElementById("demo").innerHTML =  "<center>Invoice</center>" + "<table style='width:100%'><tr><th>Product</th><th>Price</th></tr>"+ text +"<br>" + "<br>"+ "<tr><td>" + "Tax" + "</td><td>"+"10"+"</td></tr>" + "<tr><td>" + "Total" + "</td><td>"+ total+ "</td></tr>" +"</table>";
+
+let html_pdf = "<center>Invoice</center>" + "<table style='width:100%'><tr><th>Product</th><th>Price</th></tr>"+ text +"<br>" + "<br>"+ "<tr><td>" + "Tax" + "</td><td>"+"10"+"</td></tr>" + "<tr><td>" + "Total" + "</td><td>"+ total+ "</td></tr>" +"</table>";
+
+localStorage.setItem("html",html_pdf)
+
 function myFunction(item, index) {
   text += "<tr><td>"+success["msg"][index]["productname"]+"</td><td>"+success["msg"][index]["price"] + "</td></tr>" 
   total += parseInt(success["msg"][index]["price"]);
@@ -344,24 +349,25 @@ function myFunction(item, index) {
 console.log("total",total);
 
   console.log("response",success);
-  window.jsPDF = window.jspdf.jsPDF;
+  window.location.href = "\\cart\\payments.html"
+//   window.jsPDF = window.jspdf.jsPDF;
 
-var doc = new jsPDF();
+// var doc = new jsPDF();
 	
-// Source HTMLElement or a string containing HTML.
-var elementHTML = document.querySelector("#demo");
-console.log("element html",elementHTML);
+// // Source HTMLElement or a string containing HTML.
+// var elementHTML = document.querySelector("#demo");
+// console.log("element html",elementHTML);
 
-doc.html(elementHTML, {
-    callback: function(doc) {
-        // Save the PDF
-        doc.save('sample-document.pdf');
-    },
-    x: 15,
-    y: 15,
-    width: 170, //target width in the PDF document
-    windowWidth: 650 //window width in CSS pixels
-});
+// doc.html(elementHTML, {
+//     callback: function(doc) {
+//         // Save the PDF
+//         doc.save('sample-document.pdf');
+//     },
+//     x: 15,
+//     y: 15,
+//     width: 170, //target width in the PDF document
+//     windowWidth: 650 //window width in CSS pixels
+// });
 
  }
 }
