@@ -11,8 +11,10 @@
     <!-- Your CSS -->
     <link rel="stylesheet" href="/css/footer.css">
 
-    <!-- AWS Cognito Scripts -->
+    <!-- ✅ AWS SDK (MUST be first) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1480.0/aws-sdk.min.js"></script>
+
+    <!-- ✅ Cognito SDK -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/amazon-cognito-identity-js/6.3.0/amazon-cognito-identity.min.js"></script>
 
     <style>
@@ -34,8 +36,11 @@
         }
     </style>
 
+    <!-- ✅ YOUR LOGIN SCRIPT (AFTER SDKs) -->
     <script>
-        // Cognito Config
+        // ✅ Set region FIRST
+        AWS.config.region = "us-east-1";
+
         const poolData = {
             UserPoolId: "us-east-1_b4cOjrAgN",
             ClientId: "1ickidqr4gt0qsbq73l192k628"
@@ -46,6 +51,11 @@
         function loginUser() {
             const username = document.getElementById("exampleInputEmail1").value;
             const password = document.getElementById("exampleInputPassword1").value;
+
+            if (!username || !password) {
+                alert("Please enter username and password");
+                return;
+            }
 
             const authDetails = new AmazonCognitoIdentity.AuthenticationDetails({
                 Username: username,
@@ -69,7 +79,7 @@
                 },
 
                 onFailure: function(err) {
-                    console.error(err);
+                    console.error("Login error:", err);
                     alert(err.message || "Login failed ❌");
                 }
             });
@@ -82,7 +92,7 @@
     <div id="center">
         <h2>Sign in</h2>
 
-        <form>
+        <form onsubmit="event.preventDefault(); loginUser();">
             <div class="mb-3">
                 <label class="form-label">Username</label>
                 <input type="text" id="exampleInputEmail1" class="form-control" placeholder="Enter username" required>
@@ -93,7 +103,7 @@
                 <input type="password" id="exampleInputPassword1" class="form-control" placeholder="Password" required>
             </div>
 
-            <button type="button" onclick="loginUser()" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
