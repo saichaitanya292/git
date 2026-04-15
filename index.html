@@ -1,104 +1,109 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="\css\footer.css">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home page</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-        <script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
 
-function onGet() {
-    const url = "http://127.0.0.1:52761/allow-cors";
-    var headers = {}
-    
-    fetch(url, {
-        method : "GET",
-        mode: 'cors',
-        headers: headers
-    })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error(response.error)
-        }
-        console.log("hi");
-        //console.log(response.json());
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById('messages').value = data[0].user_id;
-        console.log(data[0].user_name);
-        var a = document.getElementById("exampleInputEmail1").value;
-        var b = document.getElementById("exampleInputPassword1").value;
-        console.log("tetx",a);
-        console.log("tetx",b);
-        console.log(data);
-        for(var i=0;i<data.length;i++)
-        {
-            console.log(data[i]);
-            if(data[i].user_name == a && data[i].user_password == b)
-            {
-                console.log("login successful");
-                window.location.href = "\\homepage.html";
-                sessionStorage.setItem("username",a);
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-            }
-            
-            
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="/css/footer.css">
+
+    <!-- AWS Cognito Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1480.0/aws-sdk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/amazon-cognito-identity-js/6.3.0/amazon-cognito-identity.min.js"></script>
+
+    <style>
+        #exampleInputEmail1, #exampleInputPassword1 {
+            width: 250px;
         }
 
+        #center {
+            margin: auto;
+            width: 40%;
+            padding: 20px;
+            background-image: url('/images/2223.jpg');
+            background-size: cover;
+            border-radius: 10px;
+        }
 
-    })
-    .catch(function(error) {
-        document.getElementById('messages').value = error;
-    });
+        body {
+            background-color: #f5f5f5;
+        }
+    </style>
 
-}
+    <script>
+        // Cognito Config
+        const poolData = {
+            UserPoolId: "us-east-1_b4cOjrAgN",
+            ClientId: "1ickidqr4gt0qsbq73l192k628"
+        };
 
-</script>
-<style>
-    #exampleInputEmail1
-    {
-width: 200px;
-    }
-    #exampleInputPassword1
-    {
-        width: 200px;
-    }
-    #center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  background-image: url('\\images\\2223.jpg');
-}
+        const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-</style>
-    </head>
-    <body>
-        <div id="center">
-            <h1>Sign in</h1>
-            <form id="form1">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Username</label>
-                      <input type="text" name="first_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="last_name">
-                    </div>
-                    <button type="button" onclick="onGet()" class="btn btn-primary">Submit</button>
-                  </form>
-        </div>
-<div id="messages"></div>
+        function loginUser() {
+            const username = document.getElementById("exampleInputEmail1").value;
+            const password = document.getElementById("exampleInputPassword1").value;
 
-<div style="
-padding-left: 120px;
-">
-    <img src="\images\Shoes Sale.jpg">
-    <img src="\images\Shoes Sale4.png">
-    <img src="\images\_Shoes Sale 3.png">
-</div>
+            const authDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+                Username: username,
+                Password: password
+            });
 
-    </body>
+            const cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+                Username: username,
+                Pool: userPool
+            });
+
+            cognitoUser.authenticateUser(authDetails, {
+                onSuccess: function(result) {
+                    const token = result.getIdToken().getJwtToken();
+
+                    // Store token
+                    localStorage.setItem("token", token);
+
+                    alert("Login successful ✅");
+                    window.location.href = "homepage.html";
+                },
+
+                onFailure: function(err) {
+                    console.error(err);
+                    alert(err.message || "Login failed ❌");
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="center">
+        <h2>Sign in</h2>
+
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" id="exampleInputEmail1" class="form-control" placeholder="Enter username" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" id="exampleInputPassword1" class="form-control" placeholder="Password" required>
+            </div>
+
+            <button type="button" onclick="loginUser()" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <br>
+
+    <div style="padding-left: 120px;">
+        <img src="/images/Shoes Sale.jpg" width="300">
+        <img src="/images/Shoes Sale4.png" width="300">
+        <img src="/images/_Shoes Sale 3.png" width="300">
+    </div>
+
+</body>
 </html>
