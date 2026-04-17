@@ -102,10 +102,17 @@
 
         // 2. Lex Config (⚠️ REPLACE THESE WITH YOUR BOT DETAILS)
         const lexruntime = new AWS.LexRuntime();
+        // Persistent session ID
+        let sessionId = localStorage.getItem("chatSessionId");
+        if (!sessionId) {
+            sessionId = "user-" + Math.random().toString(36).substring(2);
+            localStorage.setItem("chatSessionId", sessionId);
+        }
+
         const lexConfig = {
-            botName: "YourBotName", 
-            botAlias: "Test",       
-            userId: "User-" + Math.random().toString(36).substring(7)
+            botName: "YourBotName",
+            botAlias: "Test",
+            userId: sessionId
         };
 
         // --- Cognito Login Function ---
@@ -142,6 +149,25 @@
             });
         }
 
+        // Save chat messages
+        function saveMessage(role, text) {
+            let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
+            chats.push({ role, text });
+            localStorage.setItem("chatHistory", JSON.stringify(chats));
+        }
+
+        // Load chat messages on page load
+        function loadChat() {
+            let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
+            const display = document.getElementById('chat-display');
+            chats.forEach(msg => {
+                display.innerHTML += `<div class="chat-bubble ${msg.role === 'user' ? 'user-msg' : 'bot-msg'}"><b>${msg.role === 'user' ? 'You' : 'Bot'}:</b> ${msg.text}</div>`;
+            });
+            display.scrollTop = display.scrollHeight;
+        }
+
+        window.onload = loadChat;
+
         // --- Lex Chat Functions ---
         function toggleChat() {
             const win = document.getElementById('chat-window');
@@ -157,6 +183,7 @@
 
             // Show User Message
             display.innerHTML += `<div class="chat-bubble user-msg"><b>You:</b> ${text}</div>`;
+            saveMessage("user", text);
             input.value = "";
 
             const params = {
@@ -172,6 +199,7 @@
                     display.innerHTML += `<div class="chat-bubble bot-msg" style="color:red">Error connecting to bot.</div>`;
                 } else {
                     display.innerHTML += `<div class="chat-bubble bot-msg"><b>Bot:</b> ${data.message}</div>`;
+                    saveMessage("bot", data.message);
                 }
                 display.scrollTop = display.scrollHeight;
             });
@@ -180,7 +208,7 @@
 </head>
 
 <body>
-
+    <a href="chatbot.html" class="btn btn-success">Open Chatbot Page</a>
     <div id="center">
         <h2>Sign in</h2>
         <form onsubmit="event.preventDefault(); loginUser();">
