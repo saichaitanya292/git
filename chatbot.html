@@ -1,135 +1,424 @@
-
 <!DOCTYPE html>
 <html>
 <head>
+    <title>AI Shopping Assistant SaaS</title>
     <meta charset="UTF-8">
-    <title>Chatbot</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1480.0/aws-sdk.min.js"></script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            background: #f5f5f5;
-        }
-    
-        #chat-container {
-            width: 500px;
-            margin: 50px auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            height: 600px;
-        }
-    
-        #chat-header {
-            background: #0d6efd;
-            color: white;
-            padding: 15px;
-            font-size: 18px;
-        }
-    
-        #chat-display {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-        }
-    
-        .chat-bubble {
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    
-        .user-msg { background: #e9ecef; text-align: right; }
-        .bot-msg { background: #d1e7ff; text-align: left; }
-    </style>
-    
-    <script>
-        AWS.config.region = "us-east-1";
-    
-        // Persistent session
-        let sessionId = localStorage.getItem("chatSessionId");
-        if (!sessionId) {
-            sessionId = "user-" + Math.random().toString(36).substring(2);
-            localStorage.setItem("chatSessionId", sessionId);
-        }
-    
-        const lexruntime = new AWS.LexRuntime();
-        const lexConfig = {
-            botName: "YourBotName",
-            botAlias: "Test",
-            userId: sessionId
-        };
-    
-        function saveMessage(role, text) {
-            let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
-            chats.push({ role, text });
-            localStorage.setItem("chatHistory", JSON.stringify(chats));
-        }
-    
-        function loadChat() {
-            let chats = JSON.parse(localStorage.getItem("chatHistory")) || [];
-            const display = document.getElementById('chat-display');
-    
-            chats.forEach(msg => {
-                display.innerHTML += `<div class="chat-bubble ${msg.role === 'user' ? 'user-msg' : 'bot-msg'}">
-                    <b>${msg.role === 'user' ? 'You' : 'Bot'}:</b> ${msg.text}
-                </div>`;
-            });
-    
-            display.scrollTop = display.scrollHeight;
-        }
-    
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const display = document.getElementById('chat-display');
-            const text = input.value.trim();
-    
-            if (!text) return;
-    
-            display.innerHTML += `<div class="chat-bubble user-msg"><b>You:</b> ${text}</div>`;
-            saveMessage("user", text);
-    
-            input.value = "";
-    
-            const params = {
-                botAlias: lexConfig.botAlias,
-                botName: lexConfig.botName,
-                inputText: text,
-                userId: lexConfig.userId
-            };
-    
-            lexruntime.postText(params, function(err, data) {
-                if (err) {
-                    display.innerHTML += `<div class="chat-bubble bot-msg" style="color:red">Error</div>`;
-                } else {
-                    display.innerHTML += `<div class="chat-bubble bot-msg"><b>Bot:</b> ${data.message}</div>`;
-                    saveMessage("bot", data.message);
-                }
-    
-                display.scrollTop = display.scrollHeight;
-            });
-        }
-    
-        window.onload = loadChat;
-    </script>
-    </head>
-    <body>
-        <div id="chat-container">
-            <div id="chat-header">Chatbot Support</div>
-            <div id="chat-display"></div>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7fb;
+    margin: 0;
+}
 
-            <div class="input-group p-2">
-                <input type="text" id="chatInput" class="form-control"
-                       placeholder="Type message..."
-                       onkeydown="if(event.key==='Enter') sendMessage()">
-                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
-            </div>
-        </div>
-    </body>
-    </html>
-  
+#chatMessages div {
+    margin-bottom: 8px;
+}
+
+.bot-msg {
+    background: #eef2ff;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.user-msg {
+    background: #0d6efd;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: right;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 8px 0;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 6px;
+}
+</style>
+</head>
+
+<body>
+<div style="background:#0d6efd;color:white;padding:15px;text-align:center;font-size:20px;font-weight:bold;display:flex;justify-content:space-between;align-items:center;">
+    <span>ShopBot AI 🚀</span>
+    <button onclick="scrollToContact()" style="background:white;color:#0d6efd;border:none;padding:8px 16px;border-radius:5px;cursor:pointer;">
+        Book Demo
+    </button>
+</div>
+
+<div style="padding:60px 20px;text-align:center;background:linear-gradient(135deg,#0d6efd,#4f8cff);color:white;">
+    <h1 style="font-size:36px;margin-bottom:10px;">Increase Sales with AI Shopping Assistant 🤖</h1>
+    <p style="font-size:18px;max-width:600px;margin:auto;">
+        Turn visitors into buyers using an intelligent chatbot that recommends products, manages cart, and handles checkout automatically.
+    </p>
+    <br>
+    <button onclick="scrollToContact()" style="padding:12px 24px;background:white;color:#0d6efd;border:none;border-radius:6px;font-size:16px;cursor:pointer;">
+        Get Started 🚀
+    </button>
+</div>
+
+<div id="chatPage" style="padding:20px;max-width:500px;margin:auto;">
+    <h2>Live Demo 🤖</h2>
+    <p style="color:#555;font-size:14px;">Try our AI assistant in action. Ask for products, add to cart, and checkout instantly.</p>
+
+    <div id="chatMessages" style="border:1px solid #ccc;height:250px;overflow:auto;margin-bottom:10px;padding:10px;background:#f9f9f9;">
+        <div><b>Bot:</b> Hi! 👋 I’m your AI shopping assistant. Ask me for products like "flipflops" or "show products".</div>
+    </div>
+
+    <input id="userInput" placeholder="Type message..." style="width:70%;padding:8px;">
+    <button onclick="sendMessage()">Send</button>
+
+    <br><br>
+
+    <button onclick="goToCheckout()" style="padding:10px 20px;background:#28a745;color:white;border:none;border-radius:5px;">
+        Go to Checkout 🛒
+    </button>
+</div>
+
+<div style="padding:20px;max-width:600px;margin:auto;text-align:center;">
+    <h3>Why Choose ShopBot AI 🤖</h3>
+    <p>✔ Boost conversions with AI recommendations</p>
+    <p>✔ Reduce manual support cost</p>
+    <p>✔ Seamless shopping experience</p>
+    <p>✔ Works 24/7 without human effort</p>
+</div>
+<div id="checkoutPage" style="display:none;padding:20px;max-width:500px;margin:auto;">
+    <h2>Secure Checkout 💳</h2>
+    <p style="color:#555;font-size:14px;">Complete your purchase below.</p>
+    <button onclick="goToChatbot()" 
+    style="margin-bottom:10px;padding:8px 16px;background:#007bff;color:white;border:none;border-radius:5px;">
+        ← Back to Chatbot
+    </button>
+
+    <input id="custName" placeholder="Enter your name" style="width:100%;padding:8px;margin-bottom:10px" />
+    <input id="custEmail" placeholder="Enter your email" style="width:100%;padding:8px;margin-bottom:10px" />
+    <input id="upiId" placeholder="Enter your UPI ID (example@upi)" style="width:100%;padding:8px;margin-bottom:10px" />
+
+    <button onclick="processPayment()" style="padding:10px 20px;background:#28a745;color:white;border:none;border-radius:5px;">
+        Pay via UPI
+    </button>
+
+    <div id="chat-display" style="margin-top:20px"></div>
+</div>
+<div style="padding:20px;max-width:600px;margin:auto;text-align:center;border-top:1px solid #eee;">
+    <h3>AI Chatbot for Your Business</h3>
+    <p>We build custom AI chatbots for e-commerce, customer support, and lead generation.</p>
+    <button onclick="scrollToContact()" style="padding:10px 20px;background:#28a745;color:white;border:none;border-radius:5px;">
+        Get Your Chatbot 🚀
+    </button>
+</div>
+
+<div style="padding:20px;max-width:700px;margin:auto;text-align:center;border-top:1px solid #eee;">
+    <h3>Simple Pricing 💰</h3>
     
+    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+        
+        <div style="border:1px solid #ccc;padding:15px;border-radius:8px;width:200px;">
+            <h4>Starter</h4>
+            <p>₹999/month</p>
+            <p>✔ Basic chatbot</p>
+            <p>✔ Product listing</p>
+            <button onclick="selectPlan('Starter')">Choose</button>
+        </div>
+
+        <div style="border:1px solid #0d6efd;padding:15px;border-radius:8px;width:200px;">
+            <h4>Business</h4>
+            <p>₹2,999/month</p>
+            <p>✔ AI chatbot</p>
+            <p>✔ Cart + Checkout</p>
+            <p>✔ Lead capture</p>
+            <button onclick="selectPlan('Business')">Choose</button>
+        </div>
+
+        <div style="border:1px solid #28a745;padding:15px;border-radius:8px;width:200px;">
+            <h4>Premium</h4>
+            <p>₹6,999/month</p>
+            <p>✔ Custom AI</p>
+            <p>✔ Integrations</p>
+            <p>✔ Full automation</p>
+            <button onclick="selectPlan('Premium')">Choose</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="contactSection" style="padding:20px;max-width:600px;margin:auto;text-align:center;">
+    <h3>Start Your Free Demo</h3>
+    <p>Enter your email and we’ll help you launch your AI assistant.</p>
+    <input id="clientEmail" placeholder="Enter your email" style="padding:8px;width:70%;margin-bottom:10px;" />
+    <br>
+    <button onclick="submitLead()" style="padding:10px 20px;background:#0d6efd;color:white;border:none;border-radius:5px;">
+        Request Demo
+    </button>
+</div>
+
+<script>
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+        if (!cart || cart.length === 0) {
+            cart = [
+                { name: "Flipflop 1", price: 300, qty: 2 },
+                { name: "Flipflop 2", price: 450, qty: 1 }
+            ];
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+        function generateInvoice(amount) {
+            if (!cart || cart.length === 0) {
+                alert("Cart is empty!");
+                return;
+            }
+
+            function escapeHTML(str) {
+                return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            let customerName = document.getElementById('custName').value.trim();
+            let customerEmail = document.getElementById('custEmail').value.trim();
+
+            if (!customerName) {
+                alert("Please enter your name");
+                return;
+            }
+
+            if (!customerEmail.includes("@")) {
+                alert("Please enter a valid email");
+                return;
+            }
+
+            customerName = escapeHTML(customerName);
+            customerEmail = escapeHTML(customerEmail);
+
+            const now = new Date();
+            const invoiceId = "INV-" + Math.floor(100000 + Math.random() * 900000);
+
+            const rows = cart.map(item => `
+                <tr>
+                    <td>${item.name}</td>
+                    <td style="text-align:center">${item.qty}</td>
+                    <td style="text-align:right">₹${item.price.toLocaleString()}</td>
+                    <td style="text-align:right">₹${(item.price * item.qty).toLocaleString()}</td>
+                </tr>
+            `).join("");
+
+            const invoiceHtml = `
+                <div id="invoice" style="background:#fff;padding:20px;border-radius:8px">
+                    <h3>Invoice</h3>
+                    <div style="font-size:12px;color:#666;margin-bottom:10px;">
+                        <div><b>Invoice ID:</b> ${invoiceId}</div>
+                        <div><b>Date:</b> ${now.toLocaleString()}</div>
+                        <div><b>Name:</b> ${customerName}</div>
+                        <div><b>Email:</b> ${customerEmail}</div>
+                    </div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left;border-bottom:1px solid #ddd;padding:6px">Item</th>
+                                <th style="text-align:center;border-bottom:1px solid #ddd;padding:6px">Qty</th>
+                                <th style="text-align:right;border-bottom:1px solid #ddd;padding:6px">Price</th>
+                                <th style="text-align:right;border-bottom:1px solid #ddd;padding:6px">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" style="text-align:right;padding:8px"><b>Grand Total</b></td>
+                                <td style="text-align:right;padding:8px"><b>₹${amount.toLocaleString()}</b></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div style="margin-top:10px;">
+                    <button class="btn btn-success" onclick="downloadInvoicePDF()">Download PDF</button>
+                </div>
+            `;
+
+            const display = document.getElementById('chat-display');
+            display.innerHTML = `<div class="chat-bubble bot-msg">${invoiceHtml}</div>`;
+
+            window.__LAST_INVOICE_HTML__ = invoiceHtml;
+
+            cart = [];
+            localStorage.removeItem("cart");
+        }
+
+function processPayment() {
+    const upi = document.getElementById("upiId").value.trim();
+
+    if (!upi.includes("@")) {
+        alert("Enter valid UPI ID");
+        return;
+    }
+
+    const amount = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+    alert("Redirecting to UPI payment of ₹" + amount);
+
+    // Simulate payment success after 2 sec
+    setTimeout(() => {
+        alert("Payment successful ✅");
+        generateInvoice(amount);
+    }, 2000);
+}
+
+function sendMessage() {
+    const input = document.getElementById("userInput");
+    const msg = input.value.trim().toLowerCase();
+
+    if (!msg) return;
+
+    const chat = document.getElementById("chatMessages");
+    chat.innerHTML += `<div class="user-msg">${msg}</div>`;
+
+    if (msg.includes("flipflop") || msg.includes("slipper") || msg.includes("product") || msg.includes("show")) {
+        showProducts();
+    } else if (msg.includes("cart")) {
+        showCart();
+    } else {
+        chat.innerHTML += `<div class="bot-msg">I can help you shop 😊 Try: 'show products' or 'view cart'</div>`;
+    }
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function showProducts() {
+    const chat = document.getElementById("chatMessages");
+
+    const products = [
+        { name: "Flipflop 1", price: 300 },
+        { name: "Flipflop 2", price: 450 },
+        { name: "Sport Slipper", price: 600 },
+        { name: "Casual Flipflop", price: 350 }
+    ];
+
+    let html = `<div class="bot-msg">Here are some products 👇</div>`;
+
+    products.forEach(p => {
+        html += `
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x150?text=${p.name}">
+                <b>${p.name}</b><br>
+                ₹${p.price}<br><br>
+                <button onclick="addToCart('${p.name}', ${p.price})">Add to Cart</button>
+            </div>
+        `;
+    });
+
+    chat.innerHTML += html;
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function addToCart(name, price) {
+    const existing = cart.find(i => i.name === name);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    const chat = document.getElementById("chatMessages");
+    chat.innerHTML += `<div class="bot-msg">${name} added to cart ✅ (type 'cart' to view)</div>`;
+}
+
+function showCart() {
+    const chat = document.getElementById("chatMessages");
+
+    if (!cart || cart.length === 0) {
+        chat.innerHTML += `<div class="bot-msg">Your cart is empty 🛒</div>`;
+        return;
+    }
+
+    let total = 0;
+    let html = `<div class="bot-msg">Your Cart 🛒</div>`;
+
+    cart.forEach(item => {
+        total += item.price * item.qty;
+        html += `
+            <div>
+                ${item.name} × ${item.qty} = ₹${(item.price * item.qty).toLocaleString()}
+            </div>
+        `;
+    });
+
+    html += `<div><b>Total:</b> ₹${total.toLocaleString()}</div>`;
+    html += `<button onclick="goToCheckout()">Proceed to Checkout</button>`;
+
+    chat.innerHTML += html;
+}
+function scrollToContact() {
+    document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+}
+
+function submitLead() {
+    const email = document.getElementById("clientEmail").value;
+
+    if (!email.includes("@")) {
+        alert("Enter valid email");
+        return;
+    }
+
+    alert("Demo request submitted! We will contact you soon.");
+}
+
+function selectPlan(plan) {
+    alert("You selected " + plan + " plan. We will contact you shortly.");
+    document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+<script>
+function goToChatbot() {
+    document.getElementById("checkoutPage").style.display = "none";
+    document.getElementById("chatPage").style.display = "block";
+}
+
+function goToCheckout() {
+    document.getElementById("chatPage").style.display = "none";
+    document.getElementById("checkoutPage").style.display = "block";
+}
+</script>
+<script>
+function downloadInvoicePDF() {
+    const content = window.__LAST_INVOICE_HTML__;
+
+    if (!content) {
+        alert("No invoice to download");
+        return;
+    }
+
+    const win = window.open('', '', 'width=800,height=600');
+    win.document.write(`
+        <html>
+        <head>
+            <title>Invoice</title>
+        </head>
+        <body>
+            ${content}
+        </body>
+        </html>
+    `);
+    win.document.close();
+    win.print();
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("chatPage").style.display = "block";
+});
+</script>
+</body>
+<div style="margin-top:40px;padding:20px;text-align:center;color:#777;font-size:13px;">
+    © 2026 ShopBot AI • AI Commerce Platform • All Rights Reserved
+</div>
+</html>
